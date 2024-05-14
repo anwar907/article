@@ -2,27 +2,28 @@ import 'package:client/client.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPagesView extends StatelessWidget {
-  const DetailsPagesView({super.key, required this.article});
-
-  final Article article;
+  const DetailsPagesView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as Article;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
-          article.title ?? '',
+          args.title ?? '',
           style: Theme.of(context).textTheme.titleMedium,
         ),
       ),
       body: Hero(
-        tag: article.author ?? '',
+        tag: args.author ?? '',
         flightShuttleBuilder: (flightContext, animation, flightDirection,
             fromHeroContext, toHeroContext) {
           return Material(
               child: Image.network(
-            article.urlToImage ?? '',
+            args.urlToImage ?? '',
             width: 50,
           ));
         },
@@ -37,23 +38,23 @@ class DetailsPagesView extends StatelessWidget {
                     width: double.infinity,
                     height: MediaQuery.of(context).size.height / 3,
                     child: Image.network(
-                      article.urlToImage ?? '',
+                      args.urlToImage ?? '',
                       fit: BoxFit.cover,
                     )),
               ),
               Text(
-                article.author ?? '',
+                args.author ?? '',
                 style: Theme.of(context).textTheme.titleMedium,
               ),
-              Text(article.description ?? ''),
+              Text(args.description ?? ''),
               const SizedBox(
                 height: 12,
               ),
-              Text(article.content ?? ''),
+              Text(args.content ?? ''),
               const SizedBox(
                 height: 12,
               ),
-              Text('Read More: ${article.url}'),
+              Text('Read More: ${args.url}'),
             ],
           ),
         ),
