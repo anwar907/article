@@ -38,6 +38,7 @@ dependencies:
     path: ./package/network/client
   cupertino_icons: ^1.0.6
   flutter_bloc: ^8.1.5
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
