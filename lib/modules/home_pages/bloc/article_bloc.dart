@@ -16,6 +16,7 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
 
   final HomePagesRepository _homePagesRepository;
 
+  // Asynchronously fetches articles based on the provided event and emits the corresponding states.
   Future<void> fetchArticles(
       FetchArticles event, Emitter<ArticleState> emit) async {
     try {
@@ -29,4 +30,6 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
           status: GlobalStateStatus.error, message: e.toString()));
     }
   }
+
+  Future<void> getArticle() async => add(FetchArticles());
 }

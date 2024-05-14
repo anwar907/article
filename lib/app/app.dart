@@ -1,4 +1,5 @@
 import 'package:article/modules/home_pages/bloc/article_bloc.dart';
+import 'package:article/modules/home_pages/view/home_pages.view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_pages_repository/home_pages_repository.dart';
@@ -16,7 +17,8 @@ class App extends StatelessWidget {
             providers: [
               BlocProvider<ArticleBloc>(
                   create: (context) =>
-                      ArticleBloc(homePagesRepository: _homePagesRepository))
+                      ArticleBloc(homePagesRepository: _homePagesRepository)
+                        ..add(FetchArticles()))
             ],
             child: MaterialApp(
                 title: 'Read Article',
@@ -26,6 +28,6 @@ class App extends StatelessWidget {
                   useMaterial3: true,
                 ),
                 debugShowCheckedModeBanner: false,
-                home: const Text('data'))));
+                home: const HomePagesView())));
   }
 }
