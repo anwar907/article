@@ -12,6 +12,7 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
       : _homePagesRepository = homePagesRepository,
         super(const ArticleState()) {
     on<FetchArticles>(fetchArticles);
+    on<ParsingArticle>(parseArticle);
   }
 
   final HomePagesRepository _homePagesRepository;
@@ -32,4 +33,15 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
   }
 
   Future<void> getArticle() async => add(FetchArticles());
+
+  Future<void> parseArticle(
+      ParsingArticle event, Emitter<ArticleState> emit) async {
+    try {
+      emit(state.copyWith(
+          status: GlobalStateStatus.success, article: event.article));
+    } catch (e) {
+      emit(state.copyWith(
+          status: GlobalStateStatus.error, message: e.toString()));
+    }
+  }
 }
