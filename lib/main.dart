@@ -1,21 +1,20 @@
+import 'package:api/api.dart';
+import 'package:article/app/app.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:home_pages_repository/home_pages_repository.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'utils/debugger.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = GlobalObserver();
 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: const Text('data'));
-  }
+  final apiRespository = ApiRepository();
+
+  final homePagesRespository = HomePagesRepository(apiClient: apiRespository);
+
+  final app = App(homePagesRepository: homePagesRespository);
+
+  runApp(app);
 }

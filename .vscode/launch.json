@@ -1,0 +1,52 @@
+{
+    "version": "0.1.0",
+    "configurations": [
+        {
+            "name": "Development",
+            "program": "lib/main.dart",
+            "request": "launch",
+            "type": "dart", // Arguments to be passed to the Dart or Flutter app.
+            "args": [
+                "--dart-define",
+                "BASE_API_URL=https://newsapi.org/v2",
+                "--dart-define",
+                "API_KEY=60fae82aa74b42a2a5ac38178f7e38fe",
+                "--dart-define",
+                "DOMAIN=techcrunch.com,thenextweb.com"
+            ],
+        },
+        {
+            "name": "Beta",
+            "program": "lib/main.dart",
+            "request": "launch",
+            "type": "dart", // Arguments to be passed to the Dart or Flutter app.
+            "args": [
+                "--dart-define",
+                "BASE_API_URL=https://newsapi.org/v2",
+                "--dart-define",
+                "API_KEY=60fae82aa74b42a2a5ac38178f7e38fe",
+                "--dart-define",
+                "DOMAIN=techcrunch.com,thenextweb.com"
+            ],
+        },
+        {
+            "name": "Production",
+            "program": "lib/main.dart",
+            "request": "launch",
+            "type": "dart", // Arguments to be passed to the Dart or Flutter app.
+            "args": [
+                "--dart-define",
+                "BASE_API_URL=https://newsapi.org/v2",
+                "--dart-define",
+                "API_KEY=60fae82aa74b42a2a5ac38178f7e38fe",
+                "--dart-define",
+                "DOMAIN=techcrunch.com,thenextweb.com"
+            ],
+        },
+        {
+            "name": "Flutter: Attach to Device",
+            "type": "dart",
+            "request": "attach"
+        },
+    ]
+}
